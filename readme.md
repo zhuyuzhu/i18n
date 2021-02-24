@@ -4,7 +4,7 @@
 
 最近接到一个项目国际化的任务，要把平台中存在的六个项目全部做成国际化，第一步就是要先把项目中所有的中文都找出来。但是如果从页面上是很难完全找出来的，因为项目比较大，各种错误提示，系统错误等中文消息，都不容易在页面上复现。又加上我对这个六个项目不太熟悉，从页面上找实在是太麻烦。我首先想到的是通过VS Code的搜索功能来找，VS Code的搜索功能可以通过正则表达式的方式进行搜索。中文的范围是**[\u4E00-\u9FA5]+**，然后发现仅一个项目的jsp文件就有200多个，匹配到的内容就有6000多个。还有js、html文件，而且还是6个项目。这种方法显然也很费事费力。只能通过脚本爬取中文以及中文所在的文件了。
 
-请参考这篇文章，看我是如何爬取中文的。
+请参考这篇文章，看我是如何爬取中文的：https://blog.csdn.net/zyz00000000/article/details/114012727
 
 ### 开始
 
@@ -64,9 +64,9 @@ jQuery.i18n.browserLang({});
     });
 ```
 
-![点击并拖拽以移动](data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==)
-
 以上配置项中，name值为strings，language值为zh_CN，来确定加载的语言资源文件名：strings_zh_CN.properties
+
+
 
 **（3）$.i18n.prop(key) ——** 根据properties语言资源文件的键key获取对应的变量值
 
