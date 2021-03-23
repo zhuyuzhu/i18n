@@ -27,6 +27,35 @@ $(".lan_select").change(function () {
 
 });
 
+i18nCss = {
+    en_GB : {
+        string_prop : {
+        
+        },
+        string_login_productName: {
+            "font-size": "20px",
+            'color': 'green'
+        },
+        string_login_keepPassword: {
+            "font-wight": '900',
+            'color': 'green'
+        } 
+    },
+    zh_CN : {
+        string_prop : {
+        
+        },
+        string_login_productName: {
+            "font-size": "20px",
+            "color": "#f40"
+        },
+        string_login_keepPassword: {
+            "font-wight": '900',
+            "color": "#f40"
+        }
+    } 
+    
+}
 
 function loadProperties(type) {
     jQuery.i18n.properties({
@@ -38,10 +67,14 @@ function loadProperties(type) {
         encoding: 'UTF-8',
         callback: function () { // 回调方法
             $(".lan_select").val(type);
-            $('.username').html($.i18n.prop('string_login_productName'));
-            $('.password').html($.i18n.prop('string_login_keepPassword'));
 
-            $('.tip').html($.i18n.prop('string_prop', "晴天", "钓鱼"))
+            $('.i18n').each(function(el) {
+                var key = $(this).attr('GJType');
+                $(this).text($.i18n.prop(key)).css(i18nCss[type][key])
+            })
+            // $('.tip').text($.i18n.prop('string_prop', "晴天", "钓鱼"))
+            
         }
     });
 }
+
